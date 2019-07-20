@@ -11,9 +11,11 @@ This application doesn't provide many features in order to keep it simple. Here 
 
 Setup
 
-$ bundle install
-$ bundle exec rails db:migrate Or $ bundle exec rake db:schema:load
-$ bundle exec rails server
+    $ bundle install
+    
+    $ bundle exec rails db:migrate Or $ bundle exec rake db:schema:load
+    
+    $ bundle exec rails server
 
 
 For CSS Style
@@ -25,10 +27,10 @@ For testing
 See more details on Gemfile.
 Test
 
-$ bundle exec rake test test/models/user_test.rb
+    $ bundle exec rake test test/models/user_test.rb
 
 Data reset and sample data creation
 
-$ bundle exec rake db:seed # Create sample data
+    $ bundle exec rake db:seed # Create sample data
 
 <a href="https://github.com/Poussaoui/Twitter-Ruby-On-Rails/tree/master/Screenshot">Screenshots</a>
