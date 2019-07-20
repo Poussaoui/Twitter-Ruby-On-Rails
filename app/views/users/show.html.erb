@@ -1,0 +1,98 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section>
+      <h1>
+        <%= @user.name %>
+      </h1>
+    </section>
+
+
+  </aside>
+  <div class="col-md-8">
+    <%= render 'follow_form' if  !session[:user].nil? %>
+  </div>
+</div>
+
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <img src="<%= @user.image_url %>" alt="" height="42" width="42">
+</p>
+
+
+
+<% @user ||= current_user %>
+<div class="stats">
+  <a href="<%= following_user_path(@user) %>">
+    <strong id="following" class="stat">
+      <%= @user.followed_users.count %>
+    </strong>
+    following
+  </a>
+   |
+  <a href="<%= followers_user_path(@user) %>">
+    <strong id="followers" class="stat">
+      <%= @user.followers.count %>
+    </strong>
+    followers
+  </a>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading"><p>
+  <strong>Tweets :</strong>
+  <%= @user.posts.count %>
+</p></div>
+  <div class="panel-body">
+
+      <div class="panel panel-default">
+  <div class="panel-body">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Tweets</th>
+    </tr>
+  </thead>
+ <tbody>
+   <% @user.posts.each do |post| %>
+     <tr>
+       <td>
+         <%= post.body %>
+       </td>
+     </tr>
+   <% end %>
+  </tbody>
+</table>
+     </div>
+</div>
+</div>
+</div>
+
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">add Tweet</div>
+  <div class="panel-body">
+    <%= form_for([@user,@user.posts.build]) do |f| %>
+  <div class="field">
+    <%= f.text_area :body %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit  %>
+  </div>
+  <% end %>
+</div>
+</div>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <img src="<%= @user.image_url %>" alt="" height="42" width="42">
+</p>
+
+
+<% @user ||= current_user %>
+<div class="stats">
+  <a href="<%= following_user_path(@user) %>">
+    <strong id="following" class="stat">
+      <%= @user.followed_users.count %>
+    </strong>
+    following
+  </a>
+   |
+  <a href="<%= followers_user_path(@user) %>">
+    <strong id="followers" class="stat">
+      <%= @user.followers.count %>
+    </strong>
+    followers
+  </a>
+</div>
+
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th colspan="2"> Friends Tweets</th>
+    </tr>
+    <tr>
+      <th colspan="2">User</th>
+      <th>Tweet</th>
+    </tr>
+  </thead>
+ <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= User.find(post.user_id).name %></td>
+        <td>
+          <img src="<%= User.find(post.user_id).image_url %>" alt="" height="42" width="42">
+        </td>
+        <td>
+          <%= post.body %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to 'Back', users_path %>

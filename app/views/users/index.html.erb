@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Users</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Image</th>
+      <th colspan="2"></th>
+      <th colspan="2"><%= link_to 'New User', new_user_path %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><img src="<%= user.image_url %>" alt="" height="42" width="42"></td>
+
+        <td><%= link_to 'show all friends tweets', showPosts_path(:id => user.id ) %></td>
+        <td><%= link_to 'Connect', connect_path(:id => user.id ) %> </td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %> </td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

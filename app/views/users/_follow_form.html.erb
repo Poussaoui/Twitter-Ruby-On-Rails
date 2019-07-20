@@ -1,0 +1,5 @@
+<% unless !session[:user] %>
+  <div id="follow_form">
+    <%= render 'follow' %>
+  </div>
+<% end %>
