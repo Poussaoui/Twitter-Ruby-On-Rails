@@ -30,3 +30,5 @@ $ bundle exec rake test test/models/user_test.rb
 Data reset and sample data creation
 
 $ bundle exec rake db:seed # Create sample data
+
+<a href="https://github.com/Poussaoui/Twitter-Ruby-On-Rails/tree/master/Screenshot">Screenshots</a>
